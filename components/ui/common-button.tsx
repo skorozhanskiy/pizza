@@ -9,6 +9,7 @@ interface Props {
   disabled?: boolean;
   style?: any;
   onClick?: any;
+  children?: React.ReactNode;
 }
 
 export const CommonButton: React.FC<Props> = ({
@@ -27,7 +28,7 @@ export const CommonButton: React.FC<Props> = ({
         components: {
           Button: {
             colorPrimary: '#202020',
-            algorithm: true, // Enable algorithm
+            algorithm: false, // Enable algorithm
             lineWidth: 0,
             borderRadius: 15,
             fontWeight: 700,
@@ -35,6 +36,7 @@ export const CommonButton: React.FC<Props> = ({
             lineHeight: 22,
             defaultHoverColor: '#FE5F00',
             defaultActiveColor: '#FE5F00',
+            defaultShadow: 'none',
             defaultBg: '#f9fafb',
           },
         },
