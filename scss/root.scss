@@ -1,0 +1,94 @@
+// html {
+// 	font-size: calc(100vw / 1920 * 10);
+
+// 	@media (max-width: 1800) {
+// 		font-size: calc(100vw / 1600 * 10);
+// 	}
+// 	@media (max-width: 1600px) {
+// 		font-size: calc(100vw / 1400 * 10);
+// 	}
+// 	@media (max-width: 1400px) {
+// 		font-size: calc(100vw / 1200 * 10);
+// 	}
+// 	@media (max-width: 1200px) {
+// 		font-size: calc(100vw / 1024 * 10);
+// 	}
+// 	@media (max-width: 1024px) {
+// 		font-size: calc(100vw / 768 * 10);
+// 	}
+// 	@media (max-width: 767px) {
+// 		font-size: calc(100vw / 500 * 10);
+// 	}
+// 	@media (max-width: 500px) {
+// 		font-size: calc(100vw / 360 * 10);
+// 	}
+// 	@media (max-width: 400px) {
+// 		font-size: calc(100vw / 320 * 10);
+// 	}
+// }
+
+/*-color-*/
+//selection
+$cl-selection: rgb(255, 221, 45, 0.32);
+$cl-selection: rgba(29, 138, 178, 0.492);
+$cl-selection: rgba(29, 166, 178, 0.353);
+//end-selection
+
+//selection
+::selection {
+	background: $cl-selection;
+	color: black;
+	text-shadow: none;
+}
+
+::-moz-selection {
+	background: $cl-selection;
+	color: #eee;
+	text-shadow: none;
+}
+//end-selection
+
+//scrollba
+::-webkit-scrollbar {
+	width: 0px;
+}
+//end-scrollba
+
+/*- visually-hidden -*/
+.hidden {
+	position: absolute !important;
+	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+	clip: rect(1px, 1px, 1px, 1px);
+	padding: 0 !important;
+	border: 0 !important;
+	height: 1px !important;
+	width: 1px !important;
+	overflow: hidden;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+/*- end visually-hidden -*/
+/*- common-no-select-*/
+.no-select {
+	/**
+				 * Для эксплорера
+				 */
+	-ms-user-select: none;
+
+	/**
+				 * Для мозилы
+				 */
+	-moz-user-select: none;
+
+	/**
+				 * Для конкверора
+				 */
+	-khtml-user-select: none;
+
+	/**
+				 * Для Сафари и Хрома
+				 */
+	-webkit-user-select: none;
+}
+/*- end-common-no-select-*/
