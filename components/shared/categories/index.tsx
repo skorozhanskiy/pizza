@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
-import { CommonButton, SortPopup } from '../../ui';
+import { CommonButton } from '../../ui';
+import { SortPopup } from '@/components/shared';
 import { Flex } from 'antd';
 
 import { useCategoryStore } from '@/store';

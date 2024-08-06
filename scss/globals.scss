@@ -3,5 +3,17 @@
 @import "root";
 
 body {
-	background-color: $cl-selection;
+	width: 100%;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto 1fr auto;
+	background-color: #fff;
+	gap: 40px;
+}
+
+.main-container {
+	max-width: 1280px;
+	width: 100%;
+	margin: 0 auto;
 }

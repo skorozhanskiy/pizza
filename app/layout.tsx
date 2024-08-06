@@ -6,6 +6,8 @@ import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { ConfigProvider } from 'antd';
 import { theme } from '@/components/shared';
 
+import { Header } from '@/components/shared';
+
 const nunito = Nunito({
   subsets: ['cyrillic'],
   variable: '--font-nunito',
@@ -26,7 +28,8 @@ export default function RootLayout({
       <body className={nunito.className}>
         <ConfigProvider theme={theme}>
           <AntdRegistry>
-            <main>{children}</main>
+            <Header />
+            <main className="main-container">{children}</main>
           </AntdRegistry>
         </ConfigProvider>
       </body>
