@@ -11,7 +11,7 @@ export const Logo: React.FC<Props> = ({ className }) => {
     <Flex style={{ alignItems: 'center', gap: '15px' }} className={className}>
       <img src="/logo.svg" alt="logo" />
       <Flex style={{ flexDirection: 'column' }} className="">
-        <a target="_blank" href="https://pizza-next-two.vercel.app/">
+        <a target="_blank" href="https://pizza-six-liard.vercel.app/">
           <Title level={2} style={{ fontWeight: 800, marginBottom: '0PX' }}>
             NEXT PIZZA
           </Title>

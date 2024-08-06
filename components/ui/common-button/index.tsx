@@ -38,6 +38,7 @@ export const CommonButton: React.FC<Props> = ({
             defaultActiveColor: '#FE5F00',
             defaultShadow: 'none',
             defaultBg: '#f9fafb',
+            defaultHoverBg: '#f9fafb',
           },
         },
       }}>
