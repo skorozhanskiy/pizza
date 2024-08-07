@@ -2,6 +2,7 @@ import { Categories } from '@/components/shared';
 import { Flex } from 'antd';
 import Title from 'antd/es/typography/Title';
 import { Filters } from '@/components/shared';
+import { PizzaCard } from '@/components/shared/pizza-card';
 export default function Home() {
   return (
     <Flex style={{ flexDirection: 'column', gap: '50px' }}>
@@ -18,10 +19,16 @@ export default function Home() {
           </Title>
           <Filters />
         </Flex>
-        <Flex style={{ width: '100%', flexDirection: 'column' }}>
-          Далеко-далеко за словесными горами в стране гласных, и согласных живут рыбные тексты.
-          Напоивший не первую но текстами взобравшись дороге! Проектах, ведущими это по всей раз
-          коварный заголовок вскоре своих, за, маленькая переписывается страна.
+        <Flex
+          style={{ width: '100%', gap: '30px', justifyContent: 'space-around', flexWrap: 'wrap' }}>
+          <PizzaCard />
+          <PizzaCard />
+          <PizzaCard />
+          <PizzaCard />
+          <PizzaCard />
+          <PizzaCard />
+          <PizzaCard />
+          <PizzaCard />
         </Flex>
       </Flex>
     </Flex>

@@ -1,0 +1,28 @@
+.container {
+	width: 285px;
+	flex-direction: column;
+	gap: 15px;
+	min-height: calc(-94px + 50vh);
+
+	.images_container {
+		width: 285px;
+		height: 285px;
+		align-items: center;
+		justify-content: center;
+		background-color: #fff7ee;
+		border-radius: 15px;
+
+		img {
+			width: 245px;
+			height: 245px;
+		}
+	}
+	.text {
+		flex-direction: column;
+		gap: 10px;
+	}
+	.price {
+		align-items: center;
+		justify-content: space-between;
+	}
+}
