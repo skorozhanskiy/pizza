@@ -4,12 +4,12 @@ import { Input, ConfigProvider } from 'antd';
 interface Props {
   className?: string;
   placeholder?: string;
-
+  onChange?: any;
   style?: any;
 }
 // const onSearch: SearchProps['onSearch'] = (value, _e, info) => console.log(info?.source, value);
 
-export const GeneralSearch: React.FC<Props> = ({ className, placeholder, style }) => {
+export const GeneralSearch: React.FC<Props> = ({ className, placeholder, style, onChange }) => {
   return (
     <ConfigProvider
       theme={{
@@ -22,7 +22,7 @@ export const GeneralSearch: React.FC<Props> = ({ className, placeholder, style }
           },
         },
       }}>
-      <Input placeholder={placeholder} style={style} className={className} />
+      <Input placeholder={placeholder} style={style} className={className} onChange={onChange} />
     </ConfigProvider>
   );
 };

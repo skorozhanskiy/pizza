@@ -1,12 +1,14 @@
 'use client';
 import React from 'react';
 import Title from 'antd/es/typography/Title';
-import { Button, Flex, ConfigProvider } from 'antd';
+import { Button, Flex, ConfigProvider, Input } from 'antd';
 import { CheckboxGroop, GeneralSearch } from '@/components/ui';
 
 interface Props {
   className?: string;
   limit?: number;
+  defaultItems: string[];
+  e?: any;
 }
 
 const list = [
@@ -20,36 +22,45 @@ const list = [
   { id: 8, name: 'итальянские травы ' },
   { id: 9, name: 'фирменный соус альфредо' },
 ];
-const limit = 6;
-const listLimit = list.slice(0, limit);
+const limit = 5;
+const listLimit = list;
 
 export const Ingredients: React.FC<Props> = ({ className }) => {
   const [showAll, setShowAll] = React.useState(false);
   const [searchValue, setSearchValue] = React.useState('');
 
+  const listItem = showAll
+    ? listLimit.filter((item) => item.name.toLocaleLowerCase().includes(searchValue))
+    : list.slice(0, limit);
   const onclick = () => {
     setShowAll(!showAll);
-    console.log(listLimit);
   };
 
-  // const listLimit = showAll ? list : list.filter((item) => item.name.includes(limit + '10'));
+  const onSearch = (value: string) => {
+    setSearchValue(value);
+  };
 
   return (
     <Flex style={{ flexDirection: 'column', gap: '15px' }} className={className}>
       <Title level={4} style={{ fontWeight: 800, marginBottom: '0px' }}>
         Ингредиенты:
       </Title>
-
-      <GeneralSearch placeholder="Поиск ингредиента" />
-
+      {showAll && (
+        <GeneralSearch
+          onChange={(e: any) => onSearch(e.target.value)}
+          placeholder="Поиск ингредиента"
+        />
+      )}
       <Flex style={{ flexDirection: 'column', gap: '5px' }}>
-        {listLimit.map((item) => (
+        {listItem.map((item) => (
           <CheckboxGroop key={item.id} name={item.name} />
         ))}
       </Flex>
-      <Button onClick={onclick} style={{ fontWeight: 700, fontSize: 16, textAlign: 'left' }}>
-        {showAll ? 'Скрыть' : ' Показать все'}
-      </Button>
+      {list.length > limit && (
+        <Button onClick={onclick} style={{ fontWeight: 700, fontSize: 16, textAlign: 'left' }}>
+          {showAll ? 'Скрыть' : ' Показать все'}
+        </Button>
+      )}
     </Flex>
   );
 };
