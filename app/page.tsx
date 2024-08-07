@@ -1,7 +1,7 @@
 import { Categories } from '@/components/shared';
 import { Flex } from 'antd';
 import Title from 'antd/es/typography/Title';
-import { Filters } from '@/components/shared';
+import { Filters, SectionContainer } from '@/components/shared';
 import { PizzaCard } from '@/components/shared/pizza-card';
 export default function Home() {
   return (
@@ -12,23 +12,54 @@ export default function Home() {
         </Title>
         <Categories />
       </Flex>
-      <Flex style={{ gap: '20px' }}>
+      <Flex style={{ gap: '50px' }}>
         <Flex style={{ width: '250px', flexDirection: 'column', gap: '20px' }}>
           <Title level={2} style={{ fontWeight: 800 }}>
             Фильтрация
           </Title>
           <Filters />
         </Flex>
-        <Flex
-          style={{ width: '100%', gap: '30px', justifyContent: 'space-around', flexWrap: 'wrap' }}>
-          <PizzaCard />
-          <PizzaCard />
-          <PizzaCard />
-          <PizzaCard />
-          <PizzaCard />
-          <PizzaCard />
-          <PizzaCard />
-          <PizzaCard />
+        <Flex style={{ flexDirection: 'column', gap: '30px' }}>
+          <SectionContainer titleName={'Пиццы'}>
+            <PizzaCard />
+            <PizzaCard />
+            <PizzaCard />
+            <PizzaCard />
+            <PizzaCard />
+            <PizzaCard />
+            <PizzaCard />
+            <PizzaCard />
+          </SectionContainer>
+          <SectionContainer titleName={'Комбо'}>
+            <PizzaCard />
+            <PizzaCard />
+            <PizzaCard />
+          </SectionContainer>
+          <SectionContainer titleName={'Закуски'}>
+            <PizzaCard />
+            <PizzaCard />
+            <PizzaCard />
+          </SectionContainer>
+          <SectionContainer titleName={'Коктейли'}>
+            <PizzaCard />
+            <PizzaCard />
+            <PizzaCard />
+          </SectionContainer>
+          <SectionContainer titleName={'Кофе'}>
+            <PizzaCard />
+            <PizzaCard />
+            <PizzaCard />
+          </SectionContainer>
+          <SectionContainer titleName={'Напитки'}>
+            <PizzaCard />
+            <PizzaCard />
+            <PizzaCard />
+          </SectionContainer>
+          <SectionContainer titleName={'Десерты'}>
+            <PizzaCard />
+            <PizzaCard />
+            <PizzaCard />
+          </SectionContainer>
         </Flex>
       </Flex>
     </Flex>

@@ -7,3 +7,4 @@ export { Logo } from './logo';
 export { SortPopup } from './sort-popup';
 export { Filters } from './filters';
 export { Ingredients } from './ingredients';
+export { SectionContainer } from './section-container';
