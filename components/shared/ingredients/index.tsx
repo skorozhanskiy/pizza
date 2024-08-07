@@ -7,18 +7,17 @@ import { CheckboxGroop, GeneralSearch } from '@/components/ui';
 interface Props {
   className?: string;
   limit?: number;
-  defaultItems: string[];
   e?: any;
 }
 
 const list = [
-  { id: 1, name: 'Сырный соус' },
+  { id: 1, name: 'сырный соус' },
   { id: 2, name: 'Моццарелла' },
-  { id: 3, name: 'Чеснок' },
-  { id: 4, name: 'Соленые огурчики' },
-  { id: 5, name: 'Красный лук' },
-  { id: 6, name: 'Томаты' },
-  { id: 7, name: 'Сырный соус' },
+  { id: 3, name: 'чеснок' },
+  { id: 4, name: 'соленые огурчики' },
+  { id: 5, name: 'красный лук' },
+  { id: 6, name: 'томаты' },
+  { id: 7, name: 'соус песто' },
   { id: 8, name: 'итальянские травы ' },
   { id: 9, name: 'фирменный соус альфредо' },
 ];
