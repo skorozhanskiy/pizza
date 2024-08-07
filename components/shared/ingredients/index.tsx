@@ -46,6 +46,7 @@ export const Ingredients: React.FC<Props> = ({ className }) => {
       </Title>
       {showAll && (
         <GeneralSearch
+          style={{ minHeight: '40px' }}
           onChange={(e: any) => onSearch(e.target.value)}
           placeholder="Поиск ингредиента"
         />

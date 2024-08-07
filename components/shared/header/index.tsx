@@ -16,7 +16,7 @@ export const Header: React.FC<Props> = () => {
         <Flex className={styles.content}>
           <Logo />
         </Flex>
-        <GeneralSearch placeholder="Поиск..." style={{ maxWidth: '400px' }} />
+        <GeneralSearch placeholder="Поиск..." style={{ maxWidth: '400px', minHeight: '40px' }} />
         <Flex className={styles.content}>
           <Users />
           <Basket />
