@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import Title from 'antd/es/typography/Title';
-import { Button, Flex, ConfigProvider, Input } from 'antd';
+import { Button, Flex, ConfigProvider } from 'antd';
 import { CheckboxGroop, GeneralSearch } from '@/components/ui';
 
 interface Props {
@@ -41,7 +41,7 @@ export const Ingredients: React.FC<Props> = ({ className }) => {
   };
 
   return (
-    <Flex style={{ flexDirection: 'column', gap: '15px' }} className={className}>
+    <Flex style={{ flexDirection: 'column', gap: '20px' }} className={className}>
       <Title level={4} style={{ fontWeight: 800, marginBottom: '0px' }}>
         Ингредиенты:
       </Title>
@@ -51,15 +51,34 @@ export const Ingredients: React.FC<Props> = ({ className }) => {
           placeholder="Поиск ингредиента"
         />
       )}
-      <Flex style={{ flexDirection: 'column', gap: '5px' }}>
+      <Flex style={{ flexDirection: 'column', gap: '5px', maxHeight: '250px', overflow: 'auto' }}>
         {listItem.map((item) => (
           <CheckboxGroop key={item.id} name={item.name} />
         ))}
       </Flex>
       {list.length > limit && (
-        <Button onClick={onclick} style={{ fontWeight: 700, fontSize: 16, textAlign: 'left' }}>
-          {showAll ? 'Скрыть' : ' Показать все'}
-        </Button>
+        <ConfigProvider
+          theme={{
+            components: {
+              Button: {
+                fontSize: 16,
+                fontWeight: 600,
+                borderRadius: 15,
+                defaultBorderColor: 'rgb(254, 95, 0)',
+                defaultBg: '#fff',
+                defaultColor: 'rgb(254, 95, 0)',
+                defaultActiveBorderColor: 'rgb(254, 95, 0)',
+                defaultActiveColor: 'rgb(254, 95, 0)',
+                defaultHoverBorderColor: 'rgb(254, 95, 0)',
+                defaultHoverColor: 'rgb(254, 95, 0)',
+                controlHeight: 35,
+              },
+            },
+          }}>
+          <Button onClick={onclick} style={{ fontWeight: 700, fontSize: 16, textAlign: 'left' }}>
+            {showAll ? 'Скрыть' : ' Показать все'}
+          </Button>
+        </ConfigProvider>
       )}
     </Flex>
   );
