@@ -3,16 +3,11 @@ import React from 'react';
 import { Checkbox, Flex, ConfigProvider } from 'antd';
 import type { CheckboxProps } from 'antd';
 
-import styles from './checkbox-groop.module.scss';
 interface Props {
   className?: string;
 }
 
-const list = [
-  { id: 1, name: 'Можно собирать' },
-  { id: 2, name: 'Новинки' },
-];
-export const CheckboxGroop: React.FC<CheckboxProps> = ({ className }) => {
+export const CheckboxGroop: React.FC<CheckboxProps> = ({ name }) => {
   return (
     <Flex style={{ flexDirection: 'column', gap: '10px' }}>
       <ConfigProvider
@@ -27,11 +22,7 @@ export const CheckboxGroop: React.FC<CheckboxProps> = ({ className }) => {
             },
           },
         }}>
-        {list.map((item) => (
-          <Checkbox key={item.id} style={{ color: '#000000', fontWeight: 600 }}>
-            {item.name}
-          </Checkbox>
-        ))}
+        <Checkbox style={{ color: '#000000', fontWeight: 600 }}>{name}</Checkbox>
       </ConfigProvider>
     </Flex>
   );

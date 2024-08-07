@@ -6,3 +6,4 @@ export { Basket } from './basket';
 export { Logo } from './logo';
 export { SortPopup } from './sort-popup';
 export { Filters } from './filters';
+export { Ingredients } from './ingredients';
