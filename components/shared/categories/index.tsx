@@ -32,7 +32,7 @@ export const Categories: React.FC<Props> = () => {
             key={item.id}
             style={{ padding: '20px 15px', minWidth: '77px' }}
             buttonName={item.name}
-            className={categoryActiveId === item.id ? `${styles.active}` : 'red'}
+            className={categoryActiveId === item.id ? `${styles.active}` : ''}
           />
         ))}
       </Flex>
