@@ -10,6 +10,7 @@ interface Props {
   style?: any;
   onClick?: any;
   children?: React.ReactNode;
+  href?: string;
 }
 
 export const CommonButton: React.FC<Props> = ({
@@ -20,6 +21,7 @@ export const CommonButton: React.FC<Props> = ({
   disabled,
   style,
   onClick,
+  href,
 }) => {
   return (
     <ConfigProvider
@@ -48,7 +50,8 @@ export const CommonButton: React.FC<Props> = ({
         type={buttonType}
         className={className}
         icon={buttonIcons}
-        onClick={onClick}>
+        onClick={onClick}
+        href={href}>
         {buttonName}
       </Button>
     </ConfigProvider>

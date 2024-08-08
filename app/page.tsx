@@ -20,7 +20,7 @@ export default function Home() {
           <Filters />
         </Flex>
         <Flex style={{ flexDirection: 'column', gap: '30px' }}>
-          <SectionContainer titleName={'Пиццы'}>
+          <SectionContainer name={'Пиццы'}>
             <PizzaCard />
             <PizzaCard />
             <PizzaCard />
@@ -30,32 +30,32 @@ export default function Home() {
             <PizzaCard />
             <PizzaCard />
           </SectionContainer>
-          <SectionContainer titleName={'Комбо'}>
+          <SectionContainer name={'Комбо'}>
             <PizzaCard />
             <PizzaCard />
             <PizzaCard />
           </SectionContainer>
-          <SectionContainer titleName={'Закуски'}>
+          <SectionContainer name={'Закуски'}>
             <PizzaCard />
             <PizzaCard />
             <PizzaCard />
           </SectionContainer>
-          <SectionContainer titleName={'Коктейли'}>
+          <SectionContainer name={'Коктейли'}>
             <PizzaCard />
             <PizzaCard />
             <PizzaCard />
           </SectionContainer>
-          <SectionContainer titleName={'Кофе'}>
+          <SectionContainer name={'Кофе'}>
             <PizzaCard />
             <PizzaCard />
             <PizzaCard />
           </SectionContainer>
-          <SectionContainer titleName={'Напитки'}>
+          <SectionContainer name={'Напитки'}>
             <PizzaCard />
             <PizzaCard />
             <PizzaCard />
           </SectionContainer>
-          <SectionContainer titleName={'Десерты'}>
+          <SectionContainer name={'Десерты'}>
             <PizzaCard />
             <PizzaCard />
             <PizzaCard />
