@@ -1,103 +1,47 @@
-import { Categories } from '@/components/shared';
-import { Flex } from 'antd';
+import { Categories, Filters, Products } from '@/components/shared';
 import Title from 'antd/es/typography/Title';
-import { Filters, SectionContainer } from '@/components/shared';
-import { PizzaCard } from '@/components/shared/pizza-card';
+
 export default function Home() {
   return (
-    <Flex
+    <div
+      className=""
       style={{
-        flexDirection: 'column',
-        gap: '50px',
+        display: 'grid',
+        gridTemplateColumns: '250px 1fr',
+        gridTemplateRows: 'auto',
+        gap: '40px',
       }}>
-      <Flex
+      <div
+        className=""
         style={{
-          flexDirection: 'column',
+          gridColumn: '1/3',
+          gridRow: '1',
           position: 'sticky',
           top: 0,
+          paddingTop: '20px',
+          paddingBottom: '30px',
           backgroundColor: 'white',
-          width: '100%',
-          paddingBottom: '20px',
-          boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+          boxShadow: '0px 10px 20px rgba(0, 0, 0, 0.1)',
           zIndex: 1,
         }}>
-        <Flex
+        <Title
+          level={2}
           style={{
-            maxWidth: '1200px',
-            margin: '0 auto',
-            flexDirection: 'column',
-            backgroundColor: 'white',
-            width: '100%',
+            fontWeight: 800,
+            fontSize: 36,
+            lineHeight: '49px',
+            marginBottom: '15px',
           }}>
-          <Title level={1} style={{ fontWeight: 800, marginBottom: '20px', position: 'static' }}>
-            Все пиццы
-          </Title>
-        </Flex>
-        <Flex
-          style={{
-            maxWidth: '1200px',
-            margin: '0 auto',
-            flexDirection: 'column',
-            backgroundColor: 'white',
-            width: '100%',
-          }}>
-          <Categories />
-        </Flex>
-      </Flex>
-      <Flex style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        <Flex style={{ gap: '50px' }}>
-          <Flex
-            style={{
-              width: '250px',
-              flexDirection: 'column',
-              gap: '20px',
-            }}>
-            <Filters />
-          </Flex>
-          <Flex style={{ flexDirection: 'column', gap: '30px' }}>
-            <SectionContainer name={'Пиццы'}>
-              <PizzaCard />
-              <PizzaCard />
-              <PizzaCard />
-              <PizzaCard />
-              <PizzaCard />
-              <PizzaCard />
-              <PizzaCard />
-              <PizzaCard />
-            </SectionContainer>
-            <SectionContainer name={'Комбо'}>
-              <PizzaCard />
-              <PizzaCard />
-              <PizzaCard />
-            </SectionContainer>
-            <SectionContainer name={'Закуски'}>
-              <PizzaCard />
-              <PizzaCard />
-              <PizzaCard />
-            </SectionContainer>
-            <SectionContainer name={'Коктейли'}>
-              <PizzaCard />
-              <PizzaCard />
-              <PizzaCard />
-            </SectionContainer>
-            <SectionContainer name={'Кофе'}>
-              <PizzaCard />
-              <PizzaCard />
-              <PizzaCard />
-            </SectionContainer>
-            <SectionContainer name={'Напитки'}>
-              <PizzaCard />
-              <PizzaCard />
-              <PizzaCard />
-            </SectionContainer>
-            <SectionContainer name={'Десерты'}>
-              <PizzaCard />
-              <PizzaCard />
-              <PizzaCard />
-            </SectionContainer>
-          </Flex>
-        </Flex>
-      </Flex>
-    </Flex>
+          Все пиццы
+        </Title>
+        <Categories />
+      </div>
+      <div className="" style={{ gridColumn: '1', gridRow: '2' }}>
+        <Filters />
+      </div>
+      <div className="" style={{ gridColumn: '2', gridRow: '2' }}>
+        <Products />
+      </div>
+    </div>
   );
 }

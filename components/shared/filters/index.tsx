@@ -14,7 +14,7 @@ const list = [
 
 export const Filters: React.FC<Props> = ({ className }) => {
   return (
-    <Flex style={{ flexDirection: 'column', gap: '15px', position: 'sticky', top: 170 }}>
+    <Flex style={{ flexDirection: 'column', gap: '15px', position: 'sticky', top: 180 }}>
       <Title level={2} style={{ fontWeight: 800, marginBottom: '0px' }}>
         Фильтрация
       </Title>
