@@ -1,6 +1,9 @@
 @import "reset";
 @import "normalize";
 @import "root";
+html {
+	scroll-behavior: smooth;
+}
 
 body {
 	width: 100%;

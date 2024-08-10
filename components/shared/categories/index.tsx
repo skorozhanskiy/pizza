@@ -31,6 +31,7 @@ export const Categories: React.FC<Props> = () => {
             onClick={() => useCategoryStore.getState().setActiveId(item.id)}
             key={item.id}
             style={{ padding: '20px 15px', minWidth: '77px' }}
+            href={`/#${item.name}`}
             buttonName={item.name}
             className={categoryActiveId === item.id ? `${styles.active}` : ''}
           />

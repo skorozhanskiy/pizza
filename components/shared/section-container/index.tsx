@@ -9,6 +9,7 @@ interface Props {
   titleName?: string;
   children?: React.ReactNode;
   categoryId: number;
+  id: string;
 }
 
 export const SectionContainer: React.FC<Props> = ({
@@ -16,6 +17,7 @@ export const SectionContainer: React.FC<Props> = ({
   titleName,
   children,
   categoryId,
+  id,
 }) => {
   const setActiveCategoryId = useCategoryStore((state) => state.setActiveId);
   const intersectionRef = React.useRef(null);
@@ -30,10 +32,10 @@ export const SectionContainer: React.FC<Props> = ({
   }, [categoryId, intersection?.isIntersecting, titleName]);
   return (
     <Flex
-      id={titleName}
+      id={id}
       ref={intersectionRef}
       className={className}
-      style={{ flexDirection: 'column', gap: '20px' }}>
+      style={{ flexDirection: 'column', gap: '20px', paddingTop: '90px' }}>
       <Title level={2} style={{ fontWeight: 800, marginBottom: '0px' }}>
         {titleName}
       </Title>
