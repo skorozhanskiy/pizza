@@ -9,7 +9,7 @@ interface Props {
 const pizza = [{ titleName: 'Комбо', id: 'Комбо' }];
 export const Products: React.FC<Props> = ({ className }) => {
   return (
-    <Flex className={className} style={{ flexDirection: 'column' }}>
+    <Flex className={className} style={{ flexDirection: 'column', marginBottom: '90px' }}>
       <SectionContainer id="Пиццы" titleName="Пиццы" categoryId={1}>
         <PizzaCard />
         <PizzaCard />

@@ -9,7 +9,7 @@ interface Props {
 
 export const CheckboxGroop: React.FC<CheckboxProps> = ({ name }) => {
   return (
-    <Flex style={{ flexDirection: 'column', gap: '10px' }}>
+    <Flex style={{ flexDirection: 'column', gap: '10px' }} className="no-select">
       <ConfigProvider
         theme={{
           components: {
