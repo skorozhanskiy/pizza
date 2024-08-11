@@ -11,8 +11,8 @@ interface Props {
 
 export const Header: React.FC<Props> = () => {
   return (
-    <Flex className="main-container">
-      <Flex className={styles.container}>
+    <Flex className={styles.container}>
+      <Flex className={styles.wrapper}>
         <Flex className={styles.content}>
           <Logo />
         </Flex>
