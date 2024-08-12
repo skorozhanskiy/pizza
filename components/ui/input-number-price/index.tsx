@@ -25,6 +25,11 @@ export const InputNumberPrice: React.FC<Props> = ({ className }) => {
               colorPrimaryBorderHover: '#fe5f00',
               handleActiveOutlineColor: '#fe5d003a',
             },
+            InputNumber: {
+              hoverBorderColor: '#fe5f00',
+              activeBorderColor: '#fe5f00',
+              handleHoverColor: '#fe5f00',
+            },
           },
         }}>
         <Title level={4} style={{ fontWeight: 800, marginBottom: '0px' }}>

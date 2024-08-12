@@ -48,9 +48,11 @@ export const SortPopup: React.FC<Props> = ({ className }) => {
             lineHeight: 1.5,
             optionPadding: '8px 10px',
             menuPadding: 6,
-
+            dropdownHeight: 'auto',
             borderRadiusSM: 5,
             marginXS: 440,
+
+            optionSelectedBg: '#fe5d0056',
           },
           Button: {
             fontSize: 16,
@@ -65,7 +67,7 @@ export const SortPopup: React.FC<Props> = ({ className }) => {
       <div className={className}>
         <Cascader options={options} onChange={onChange}>
           <Button
-            style={{ width: '100%', minHeight: 40, backgroundColor: '#FAFAFA' }}
+            style={{ width: '100%', minHeight: '40px', backgroundColor: '#FAFAFA' }}
             icon={<ArrowUpDown size={16} />}
             type="link">
             Сортировка: &nbsp;

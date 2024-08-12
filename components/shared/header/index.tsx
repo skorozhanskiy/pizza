@@ -3,6 +3,7 @@ import { Logo, Users, Basket } from '@/components/shared';
 import { Flex } from 'antd';
 
 import { GeneralSearch } from '@/components/ui';
+import { SearchAutoComplete } from '@/components/ui';
 
 import styles from './header.module.scss';
 interface Props {
@@ -16,7 +17,8 @@ export const Header: React.FC<Props> = () => {
         <Flex className={styles.content}>
           <Logo />
         </Flex>
-        <GeneralSearch placeholder="Поиск..." style={{ maxWidth: '400px', minHeight: '40px' }} />
+        {/* <GeneralSearch placeholder="Поиск..." style={{ maxWidth: '400px', minHeight: '40px' }} /> */}
+        <SearchAutoComplete />
         <Flex className={styles.content}>
           <Users />
           <Basket />

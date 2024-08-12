@@ -16,13 +16,19 @@ export const GeneralSearch: React.FC<Props> = ({ className, placeholder, style, 
         components: {
           Input: {
             borderRadius: 15,
-            activeBorderColor: 'rgba(254, 93, 0)',
+            activeBorderColor: '#fe5d0056',
             hoverBorderColor: 'none',
-            activeShadow: '0 0 0 2px rgba(254, 93, 0, 0.192)',
+            activeShadow: '0 0 0 2px #fe5d0056',
           },
         },
       }}>
-      <Input placeholder={placeholder} style={style} className={className} onChange={onChange} />
+      <Input
+        allowClear
+        placeholder={placeholder}
+        style={style}
+        className={className}
+        onChange={onChange}
+      />
     </ConfigProvider>
   );
 };
