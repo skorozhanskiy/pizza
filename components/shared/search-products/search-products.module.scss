@@ -1,0 +1,24 @@
+.container {
+	position: absolute;
+	width: 100%;
+	max-width: 400px;
+	min-height: 40px;
+	border-radius: 15px;
+	border: 1px solid #fe5f00;
+	z-index: 150;
+	background-color: #fff;
+	padding: 4px;
+	gap: 5px;
+
+	display: flex;
+	flex-direction: column;
+}
+.focused {
+	margin-top: 10px;
+	transition: all 0.3s ease;
+}
+.link {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
