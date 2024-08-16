@@ -1,0 +1,195 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider  = "postgresql"
+    url       = env("POSTGRES_URL") // uses connection pooling
+	directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+
+}
+
+// Создаем Таблицы
+
+// id	Int @id @default(autoincrement()) - это чило и является уникальным, а так же при добавлении пользователя ему автоматически добавляется id
+
+// createdAt DateTime @default(now()) - поле со временем когда быо создан пользователь
+
+// updatedAt DateTime @updatedAt - когда пользователь был обновлен
+
+// @unique - уникальное значение присваивается полю
+
+// Int? может быть, а может не быть
+
+model User {
+    id Int @id @default(autoincrement())
+
+    fullName String
+    email    String    @unique // @unique - уникальное значение присваивается полю
+    password String
+    role     UserRole  @default(USER)
+    verified DateTime?
+
+    provider   String? // какая социальная сеть привязана к этому пользователю
+    providerId String?
+
+    cart             Cart?  // связь с корзиной
+    orders           Order[] // связь пользователя с заказом. у пользователя может быть множество заказов
+    verificationCode VerificationCode? // связь пользователя с кодом подтверждения
+
+    createdAt DateTime @default(now()) // время добавления строки
+    updatedAt DateTime @updatedAt
+}
+
+model Category {
+    id       Int       @id @default(autoincrement())
+    name     String    @unique
+    products Product[]
+
+    createdAt DateTime @default(now()) // время добавления строки
+    updatedAt DateTime @updatedAt // последнее время обновление сттроки
+}
+
+model Product {
+    id Int @id @default(autoincrement())
+
+    name     String
+    imageUrl String
+
+    ingredients Ingredient[]
+    items       ProductItem[]
+
+    category   Category @relation(fields: [categoryId], references: [id])
+    categoryId Int
+
+    createdAt DateTime @default(now()) // время добавления строки
+    updatedAt DateTime @updatedAt // последнее время обновление сттроки
+}
+
+model ProductItem {
+    id Int @id @default(autoincrement())
+
+    price     Int
+    size      Int? // size Int? может быть, а может не быть
+    pizzaType Int? // pizzaType Int? может быть, а может не быть
+
+    cartItems CartItem[]
+
+    product   Product @relation(fields: [productId], references: [id])
+    productId Int
+}
+
+model Ingredient {
+    id Int @id @default(autoincrement())
+
+    name     String
+    price    Int
+    imageUrl String
+
+    products  Product[]
+    cartItems CartItem[]
+
+    createdAt DateTime @default(now()) // время добавления строки
+    updatedAt DateTime @updatedAt // последнее время обновление сттроки
+}
+
+model Cart {
+    id Int @id @default(autoincrement())
+
+    user   User? @relation(fields: [userId], references: [id])
+    userId Int?  @unique // @unique - уникальное значение присваивается полю
+
+    items CartItem[]
+
+    token String
+
+    totalAmount Int @default(0)
+
+    createdAt DateTime @default(now()) // время добавления строки
+    updatedAt DateTime @updatedAt // последнее время обновление сттроки
+}
+
+model CartItem {
+    id Int @id @default(autoincrement())
+
+    cart   Cart @relation(fields: [cartId], references: [id])
+    cartId Int
+
+    productItem   ProductItem @relation(fields: [productItemId], references: [id])
+    productItemId Int
+
+    quantity Int @default(1)
+
+    ingredients Ingredient[]
+
+    createdAt DateTime @default(now()) // время добавления строки
+    updatedAt DateTime @updatedAt // последнее время обновление сттроки
+}
+
+model Order {
+    id Int @id @default(autoincrement())
+
+    user   User? @relation(fields: [userId], references: [id])
+    userId Int?
+
+    token String
+
+    totalAmount Int
+    status      OrderStatus
+    paymentId   String?
+
+    items Json
+
+    fullName String
+    email    String
+    phone    String
+    address  String
+    comment  String?
+
+    createdAt DateTime @default(now()) // время добавления строки
+    updatedAt DateTime @updatedAt // последнее время обновление сттроки
+}
+
+model VerificationCode {
+    id Int @id @default(autoincrement())
+
+    user   User @relation(fields: [userId], references: [id])
+    userId Int  @unique
+
+    code String
+
+    createdAt DateTime @default(now()) // время добавления строки
+
+    @@unique([userId, code])
+}
+
+model Story {
+    id              Int    @id @default(autoincrement())
+    previewImageUrl String
+
+    items StoryItem[]
+
+    createdAt DateTime @default(now()) // время добавления строки
+}
+
+model StoryItem {
+    id Int @id @default(autoincrement())
+
+    storyId Int
+    story   Story @relation(fields: [storyId], references: [id])
+
+    sourceUrl String
+
+    createdAt DateTime @default(now()) // время добавления строки
+}
+
+enum OrderStatus {
+    PENDING
+    SUCCEEDED
+    CANCELLED
+}
+
+enum UserRole {
+    USER
+    ADMIN
+}
