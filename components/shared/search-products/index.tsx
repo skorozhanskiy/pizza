@@ -2,14 +2,28 @@
 import React from 'react';
 import { GeneralSearch } from '@/components/ui';
 import styles from './search-products.module.scss';
-import { Flex } from 'antd';
 import Link from 'next/link';
+import { Api } from '@/services/api-client';
+import { Product } from '@prisma/client';
+import { useDebounce } from 'react-use';
 interface Props {
   className?: string;
 }
 
 export const SearchProducts: React.FC<Props> = ({ className }) => {
+  const [products, setProducts] = React.useState<Product[]>([]);
+  const [searchQery, setsearchQery] = React.useState('');
   const [focused, setFocused] = React.useState(false);
+  useDebounce(
+    () => {
+      Api.products.search(searchQery).then((items) => {
+        setProducts(items);
+      });
+    },
+    500,
+    [searchQery],
+  );
+
   return (
     <>
       <div
@@ -25,10 +39,13 @@ export const SearchProducts: React.FC<Props> = ({ className }) => {
         }}></div>
       <div className={className}>
         <GeneralSearch
-          onChange={() => {}}
+          onChange={(e: any) => {
+            setsearchQery(e.target.value);
+          }}
           onFocus={() => setFocused(true)}
-          onBlur={() => setFocused(false)}
+          onBlur={() => setTimeout(() => setFocused(false), 200) && setsearchQery('')}
           placeholder="Поиск..."
+          value={searchQery}
           style={{
             width: '100%',
             maxWidth: '400px',
@@ -36,20 +53,19 @@ export const SearchProducts: React.FC<Props> = ({ className }) => {
             zIndex: 150,
           }}
         />
-        <div
-          className={`${focused && styles.focused} ${styles.container} ${
-            focused ? true : 'hidden'
-          }`}>
-          <Link href="#" className={styles.link}>
-            <img
-              src="https://media.dodostatic.net/image/r:292x292/11EE7D612FC7B7FCA5BE822752BEE1E5.avif"
-              width={32}
-              height={32}
-              alt="изображение продукта"
-            />
-            <span>5:38</span>
-          </Link>
-        </div>
+        {products.length > 0 && (
+          <div
+            className={`${focused && styles.focused} ${styles.container} ${
+              focused ? true : 'hidden'
+            }`}>
+            {products.map((product) => (
+              <Link href={`/product/${product.id}`} key={product.id} className={styles.link}>
+                <img src={product.imageUrl} width={32} height={32} alt={product.name} />
+                <span>{product.name}</span>
+              </Link>
+            ))}
+          </div>
+        )}
       </div>
     </>
   );

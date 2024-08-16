@@ -8,6 +8,8 @@ interface Props {
   style?: any;
   onFocus?: any;
   onBlur?: any;
+  value?: string;
+  onClick?: any;
 }
 // const onSearch: SearchProps['onSearch'] = (value, _e, info) => console.log(info?.source, value);
 
@@ -18,6 +20,8 @@ export const GeneralSearch: React.FC<Props> = ({
   onChange,
   onFocus,
   onBlur,
+  value,
+  onClick,
 }) => {
   return (
     <ConfigProvider
@@ -39,6 +43,8 @@ export const GeneralSearch: React.FC<Props> = ({
         onChange={onChange}
         onFocus={onFocus}
         onBlur={onBlur}
+        value={value}
+        onClick={onClick}
       />
     </ConfigProvider>
   );
