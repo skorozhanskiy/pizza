@@ -6,10 +6,19 @@ interface Props {
   placeholder?: string;
   onChange?: any;
   style?: any;
+  onFocus?: any;
+  onBlur?: any;
 }
 // const onSearch: SearchProps['onSearch'] = (value, _e, info) => console.log(info?.source, value);
 
-export const GeneralSearch: React.FC<Props> = ({ className, placeholder, style, onChange }) => {
+export const GeneralSearch: React.FC<Props> = ({
+  className,
+  placeholder,
+  style,
+  onChange,
+  onFocus,
+  onBlur,
+}) => {
   return (
     <ConfigProvider
       theme={{
@@ -28,6 +37,8 @@ export const GeneralSearch: React.FC<Props> = ({ className, placeholder, style, 
         style={style}
         className={className}
         onChange={onChange}
+        onFocus={onFocus}
+        onBlur={onBlur}
       />
     </ConfigProvider>
   );

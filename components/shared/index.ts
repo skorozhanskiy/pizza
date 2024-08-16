@@ -9,3 +9,4 @@ export { Filters } from './filters';
 export { Ingredients } from './ingredients';
 export { SectionContainer } from './section-container';
 export { Products } from './products';
+export { SearchProducts } from './search-products';
