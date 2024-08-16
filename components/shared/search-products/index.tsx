@@ -51,6 +51,8 @@ export const SearchProducts: React.FC<Props> = ({ className }) => {
             maxWidth: '400px',
             minHeight: '40px',
             zIndex: 150,
+            backgroundColor: '#f7f7f7',
+            fontSize: 19,
           }}
         />
         {products.length > 0 && (

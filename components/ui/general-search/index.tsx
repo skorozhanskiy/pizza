@@ -29,9 +29,11 @@ export const GeneralSearch: React.FC<Props> = ({
         components: {
           Input: {
             borderRadius: 15,
-            activeBorderColor: '#fe5d0056',
+            // colorBorder: 'none',
+            activeBorderColor: '#d9d9d9',
             hoverBorderColor: 'none',
-            activeShadow: '0 0 0 2px #fe5d0056',
+            // activeShadow: '0 0 0 2px #fe5d0056',
+            activeShadow: 'none',
           },
         },
       }}>

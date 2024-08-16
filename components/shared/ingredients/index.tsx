@@ -3,34 +3,24 @@ import React from 'react';
 import Title from 'antd/es/typography/Title';
 import { Button, Flex, ConfigProvider } from 'antd';
 import { CheckboxGroop, GeneralSearch } from '@/components/ui';
-
+import { useIngredients } from '@/hooks/useFilterIngredients';
 interface Props {
   className?: string;
   limit?: number;
   e?: any;
 }
 
-const list = [
-  { id: 1, name: 'сырный соус' },
-  { id: 2, name: 'Моццарелла' },
-  { id: 3, name: 'чеснок' },
-  { id: 4, name: 'соленые огурчики' },
-  { id: 5, name: 'красный лук' },
-  { id: 6, name: 'томаты' },
-  { id: 7, name: 'соус песто' },
-  { id: 8, name: 'итальянские травы ' },
-  { id: 9, name: 'фирменный соус альфредо' },
-];
 const limit = 5;
-const listLimit = list;
 
 export const Ingredients: React.FC<Props> = ({ className }) => {
+  const { ingredients, loading } = useIngredients();
+  const listLimit = ingredients;
   const [showAll, setShowAll] = React.useState(false);
   const [searchValue, setSearchValue] = React.useState('');
 
   const listItem = showAll
     ? listLimit.filter((item) => item.name.toLocaleLowerCase().includes(searchValue))
-    : list.slice(0, limit);
+    : ingredients.slice(0, 6);
   const onclick = () => {
     setShowAll(!showAll);
   };
@@ -56,7 +46,7 @@ export const Ingredients: React.FC<Props> = ({ className }) => {
           <CheckboxGroop key={item.id} name={item.name} />
         ))}
       </Flex>
-      {list.length > limit && (
+      {ingredients.length > limit && (
         <ConfigProvider
           theme={{
             components: {
