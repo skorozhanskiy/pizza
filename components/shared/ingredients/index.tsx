@@ -1,9 +1,10 @@
 'use client';
 import React from 'react';
 import Title from 'antd/es/typography/Title';
-import { Button, Flex, ConfigProvider } from 'antd';
+import { Button, Flex, ConfigProvider, Spin } from 'antd';
 import { CheckboxGroop, GeneralSearch } from '@/components/ui';
 import { useIngredients } from '@/hooks/useFilterIngredients';
+
 interface Props {
   className?: string;
   limit?: number;
@@ -41,11 +42,24 @@ export const Ingredients: React.FC<Props> = ({ className }) => {
           placeholder="Поиск ингредиента"
         />
       )}
-      <Flex style={{ flexDirection: 'column', gap: '5px', maxHeight: '250px', overflow: 'auto' }}>
-        {listItem.map((item) => (
-          <CheckboxGroop key={item.id} name={item.name} />
-        ))}
-      </Flex>
+      {loading ? (
+        <ConfigProvider
+          theme={{
+            components: {
+              Spin: {
+                colorPrimary: '#fe5f00',
+              },
+            },
+          }}>
+          <Spin size="large" />
+        </ConfigProvider>
+      ) : (
+        <Flex style={{ flexDirection: 'column', gap: '5px', maxHeight: '250px', overflow: 'auto' }}>
+          {listItem.map((item) => (
+            <CheckboxGroop key={item.id} name={item.name} />
+          ))}
+        </Flex>
+      )}
       {ingredients.length > limit && (
         <ConfigProvider
           theme={{
