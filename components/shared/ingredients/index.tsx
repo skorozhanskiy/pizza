@@ -56,7 +56,13 @@ export const Ingredients: React.FC<Props> = ({ className }) => {
       ) : (
         <Flex style={{ flexDirection: 'column', gap: '5px', maxHeight: '250px', overflow: 'auto' }}>
           {listItem.map((item) => (
-            <CheckboxGroop key={item.id} name={item.name} />
+            <CheckboxGroop
+              onChange={() => {
+                console.log(item.id, item.name);
+              }}
+              key={item.id}
+              name={item.name}
+            />
           ))}
         </Flex>
       )}

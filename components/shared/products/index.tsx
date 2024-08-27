@@ -13,6 +13,8 @@ export const Products: React.FC<Props> = ({ className }) => {
       <SectionContainer id="Пиццы" titleName="Пиццы 6:07" categoryId={1}>
         <PizzaCard />
         <PizzaCard />
+        <PizzaCard />
+        <PizzaCard />
       </SectionContainer>
       <SectionContainer id="Комбо" titleName=" Комбо" categoryId={2}>
         <PizzaCard />

@@ -5,9 +5,10 @@ import type { CheckboxProps } from 'antd';
 
 interface Props {
   className?: string;
+  onChange?: any;
 }
 
-export const CheckboxGroop: React.FC<CheckboxProps> = ({ name }) => {
+export const CheckboxGroop: React.FC<CheckboxProps> = ({ name, onChange }) => {
   return (
     <Flex style={{ flexDirection: 'column', gap: '10px' }} className="no-select">
       <ConfigProvider
@@ -22,7 +23,9 @@ export const CheckboxGroop: React.FC<CheckboxProps> = ({ name }) => {
             },
           },
         }}>
-        <Checkbox style={{ color: '#000000', fontWeight: 600 }}>{name}</Checkbox>
+        <Checkbox onChange={onChange} style={{ color: '#000000', fontWeight: 600 }}>
+          {name}
+        </Checkbox>
       </ConfigProvider>
     </Flex>
   );

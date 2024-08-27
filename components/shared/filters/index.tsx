@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { CheckboxGroop, InputNumberPrice } from '@/components/ui';
 import { Ingredients } from '@/components/shared';
@@ -8,7 +9,7 @@ interface Props {
 }
 
 const list = [
-  { id: 1, name: 'Можно собирать' },
+  { id: 1, name: 'Акции' },
   { id: 2, name: 'Новинки' },
 ];
 
@@ -19,7 +20,13 @@ export const Filters: React.FC<Props> = ({ className }) => {
         Фильтрация
       </Title>
       {list.map((item) => (
-        <CheckboxGroop key={item.id} name={item.name} />
+        <CheckboxGroop
+          onChange={() => {
+            console.log(item.name);
+          }}
+          key={item.id}
+          name={item.name}
+        />
       ))}
       <InputNumberPrice />
       <Ingredients />
