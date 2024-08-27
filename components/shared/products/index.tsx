@@ -10,7 +10,7 @@ const pizza = [{ titleName: 'Комбо', id: 'Комбо' }];
 export const Products: React.FC<Props> = ({ className }) => {
   return (
     <Flex className={className} style={{ flexDirection: 'column', marginBottom: '90px' }}>
-      <SectionContainer id="Пиццы" titleName="Пиццы 6:07" categoryId={1}>
+      <SectionContainer id="Пиццы" titleName="Пиццы 6:14" categoryId={1}>
         <PizzaCard />
         <PizzaCard />
         <PizzaCard />

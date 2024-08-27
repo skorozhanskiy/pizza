@@ -10,3 +10,4 @@ export { Ingredients } from './ingredients';
 export { SectionContainer } from './section-container';
 export { Products } from './products';
 export { SearchProducts } from './search-products';
+export { FormAuthorization } from './form-authorization';
