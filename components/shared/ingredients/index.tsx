@@ -9,12 +9,13 @@ interface Props {
   className?: string;
   limit?: number;
   e?: any;
+  checked: any;
 }
 
 const limit = 5;
 
-export const Ingredients: React.FC<Props> = ({ className }) => {
-  const { ingredients, loading } = useIngredients();
+export const Ingredients: React.FC<Props> = ({ className, checked }) => {
+  const { ingredients, loading, selectIngredients, toggleIngredients } = useIngredients();
   const listLimit = ingredients;
   const [showAll, setShowAll] = React.useState(false);
   const [searchValue, setSearchValue] = React.useState('');
@@ -58,7 +59,7 @@ export const Ingredients: React.FC<Props> = ({ className }) => {
           {listItem.map((item) => (
             <CheckboxGroop
               onChange={() => {
-                console.log(item.id, item.name);
+                checked(item.id);
               }}
               key={item.id}
               name={item.name}
