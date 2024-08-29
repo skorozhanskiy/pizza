@@ -4,7 +4,7 @@ import { CheckboxGroop, InputNumberPrice } from '@/components/ui';
 import { Ingredients } from '@/components/shared';
 import { Flex } from 'antd';
 import Title from 'antd/es/typography/Title';
-import { useIngredients } from '@/hooks/useFilterIngredients';
+import { useIngredients } from '@/hooks/use-filter-ingredients';
 import qs from 'qs';
 import { useRouter } from 'next/navigation';
 

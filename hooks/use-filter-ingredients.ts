@@ -23,15 +23,18 @@ export const useIngredients = () => {
     fetchIngredients();
   }, []);
 
-  const [selectIngredients, { toggle: toggleIngredients }] = useSet(new Set<number>([]));
   const [promotions, { toggle: togglePromotions }] = useSet(new Set<number>([]));
+  const [selectIngredients, { toggle: toggleIngredients }] = useSet(new Set<number>([]));
+  const [valueNumber, { toggle: togglevalueNumber }] = useSet(new Set<number>([]));
 
   return {
     ingredients,
     loading,
-    selectIngredients,
-    toggleIngredients,
     promotions,
     togglePromotions,
+    selectIngredients,
+    toggleIngredients,
+    valueNumber,
+    togglevalueNumber,
   };
 };

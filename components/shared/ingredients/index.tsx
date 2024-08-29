@@ -3,7 +3,7 @@ import React from 'react';
 import Title from 'antd/es/typography/Title';
 import { Button, Flex, ConfigProvider, Spin } from 'antd';
 import { CheckboxGroop, GeneralSearch } from '@/components/ui';
-import { useIngredients } from '@/hooks/useFilterIngredients';
+import { useIngredients } from '@/hooks/use-filter-ingredients';
 
 interface Props {
   className?: string;

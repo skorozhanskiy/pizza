@@ -3,6 +3,7 @@ import React from 'react';
 import type { InputNumberProps } from 'antd';
 import { Flex, InputNumber, Slider, ConfigProvider } from 'antd';
 import Title from 'antd/es/typography/Title';
+import { useIngredients } from '@/hooks/use-filter-ingredients';
 interface Props {
   className?: string;
 }
@@ -12,6 +13,7 @@ const onChange: InputNumberProps['onChange'] = (value) => {
 };
 
 export const InputNumberPrice: React.FC<Props> = ({ className }) => {
+  const { valueNumber, togglevalueNumber } = useIngredients();
   const [inputMoreValue, setinputMoreValue] = React.useState(2000);
   const [inputLessValue, setinputLessValue] = React.useState(0);
   const onChangeMore: InputNumberProps['onChange'] = (value) => {
