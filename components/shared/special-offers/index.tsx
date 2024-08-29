@@ -6,7 +6,7 @@ import { Spin, ConfigProvider, Flex } from 'antd';
 interface Props {
   className?: string;
   checked: any;
-  name: string;
+  name?: string;
 }
 
 export const SpecialOffers: React.FC<Props> = ({ className, checked }) => {

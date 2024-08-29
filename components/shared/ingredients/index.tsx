@@ -34,7 +34,7 @@ export const Ingredients: React.FC<Props> = ({ className, checked }) => {
   return (
     <Flex style={{ flexDirection: 'column', gap: '20px' }} className={className}>
       <Title level={4} style={{ fontWeight: 800, marginBottom: '0px' }}>
-        Ингредиенты:
+        Ингредиенты <span></span>
       </Title>
       {showAll && (
         <GeneralSearch
