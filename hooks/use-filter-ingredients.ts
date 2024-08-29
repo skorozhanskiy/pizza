@@ -1,12 +1,12 @@
 import { Api } from '../services/api-client';
-import { Ingredient } from '@prisma/client';
+import { Ingredient, SpecialOffers } from '@prisma/client';
 import React from 'react';
 import { useSet } from 'react-use';
 
 export const useIngredients = () => {
-  const [ingredients, setIngredients] = React.useState<Ingredient[]>([]);
   const [loading, setLoading] = React.useState(true);
 
+  const [ingredients, setIngredients] = React.useState<Ingredient[]>([]);
   React.useEffect(() => {
     async function fetchIngredients() {
       try {
@@ -23,7 +23,24 @@ export const useIngredients = () => {
     fetchIngredients();
   }, []);
 
-  const [promotions, { toggle: togglePromotions }] = useSet(new Set<number>([]));
+  const [promotions, setPromotions] = React.useState<SpecialOffers[]>([]);
+  React.useEffect(() => {
+    async function fetchPromotions() {
+      try {
+        setLoading(true);
+        const promotions = await Api.promotions.getAll();
+        setPromotions(promotions);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchPromotions();
+  }, []);
+
+  const [promotionsValue, { toggle: togglePromotions }] = useSet(new Set<number>([]));
   const [selectIngredients, { toggle: toggleIngredients }] = useSet(new Set<number>([]));
   const [valueNumber, { toggle: togglevalueNumber }] = useSet(new Set<number>([]));
 
@@ -31,6 +48,7 @@ export const useIngredients = () => {
     ingredients,
     loading,
     promotions,
+    promotionsValue,
     togglePromotions,
     selectIngredients,
     toggleIngredients,

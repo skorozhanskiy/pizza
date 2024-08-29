@@ -182,6 +182,14 @@ model StoryItem {
 
     createdAt DateTime @default(now()) // время добавления строки
 }
+model SpecialOffers{
+    id Int @id @default(autoincrement())
+
+    name String
+
+    createdAt DateTime @default(now()) // время добавления строки
+}
+
 
 enum OrderStatus {
     PENDING
