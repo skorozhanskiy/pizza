@@ -3,19 +3,15 @@ import React from 'react';
 import type { InputNumberProps } from 'antd';
 import { Flex, InputNumber, Slider, ConfigProvider } from 'antd';
 import Title from 'antd/es/typography/Title';
-import { useIngredients } from '@/hooks/use-filter-ingredients';
+
 interface Props {
   className?: string;
 }
 
-const onChange: InputNumberProps['onChange'] = (value) => {
-  console.log('changed', value);
-};
-
 export const InputNumberPrice: React.FC<Props> = ({ className }) => {
-  const { valueNumber, togglevalueNumber } = useIngredients();
-  const [inputMoreValue, setinputMoreValue] = React.useState(2000);
+  const [inputMoreValue, setinputMoreValue] = React.useState(1000);
   const [inputLessValue, setinputLessValue] = React.useState(0);
+
   const onChangeMore: InputNumberProps['onChange'] = (value) => {
     if (isNaN(value as number)) {
       return;
@@ -28,6 +24,7 @@ export const InputNumberPrice: React.FC<Props> = ({ className }) => {
     }
     setinputLessValue(value as number);
   };
+
   return (
     <Flex style={{ flexDirection: 'column', gap: '15px' }}>
       <ConfigProvider
@@ -54,7 +51,7 @@ export const InputNumberPrice: React.FC<Props> = ({ className }) => {
         <Flex style={{ gap: '15px' }}>
           <InputNumber
             min={0}
-            max={2000}
+            max={1000}
             style={{ margin: '0 16px' }}
             step={1}
             value={inputLessValue}
@@ -62,7 +59,7 @@ export const InputNumberPrice: React.FC<Props> = ({ className }) => {
           />
           <InputNumber
             min={0}
-            max={2000}
+            max={1000}
             style={{ margin: '0 16px' }}
             step={1}
             value={inputMoreValue}
@@ -71,18 +68,15 @@ export const InputNumberPrice: React.FC<Props> = ({ className }) => {
         </Flex>
         <Slider
           min={0}
-          max={2000}
+          max={1000}
           step={1}
           range={{ draggableTrack: true }}
-          defaultValue={[inputLessValue, inputMoreValue]}
+          value={[inputLessValue, inputMoreValue]}
+          onChange={(value: number[]) => {
+            setinputMoreValue(value[1]);
+            setinputLessValue(value[0]);
+          }}
         />
-        {/* <Slider
-          min={0}
-          max={10000}
-          onChange={onChange}
-          value={typeof inputMoreValue === 'number' ? inputMoreValue : 0}
-          step={1}
-        /> */}
       </ConfigProvider>
     </Flex>
   );
