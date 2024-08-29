@@ -15,7 +15,7 @@ interface Props {
 const limit = 5;
 
 export const Ingredients: React.FC<Props> = ({ className, checked }) => {
-  const { ingredients, loading, selectIngredients, toggleIngredients } = useIngredients();
+  const { ingredients, loading } = useIngredients();
   const listLimit = ingredients;
   const [showAll, setShowAll] = React.useState(false);
   const [searchValue, setSearchValue] = React.useState('');
