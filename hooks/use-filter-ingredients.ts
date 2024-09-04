@@ -43,6 +43,8 @@ export const useIngredients = () => {
   const [promotionsValue, { toggle: togglePromotions }] = useSet(new Set<number>([]));
   const [selectIngredients, { toggle: toggleIngredients }] = useSet(new Set<number>([]));
   const [valueNumber, { toggle: togglevalueNumber }] = useSet(new Set<number>([]));
+  const [inputMoreValue, setinputMoreValue] = React.useState(1000);
+  const [inputLessValue, setinputLessValue] = React.useState(0);
 
   return {
     ingredients,
@@ -54,5 +56,9 @@ export const useIngredients = () => {
     toggleIngredients,
     valueNumber,
     togglevalueNumber,
+    inputMoreValue,
+    setinputMoreValue,
+    inputLessValue,
+    setinputLessValue,
   };
 };

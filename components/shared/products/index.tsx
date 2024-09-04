@@ -6,7 +6,7 @@ import { Flex } from 'antd';
 interface Props {
   className?: string;
 }
-const pizza = [{ titleName: 'Комбо', id: 'Комбо' }];
+// const pizza = [{ titleName: 'Комбо', id: 'Комбо' }];
 export const Products: React.FC<Props> = ({ className }) => {
   return (
     <Flex className={className} style={{ flexDirection: 'column', marginBottom: '90px' }}>

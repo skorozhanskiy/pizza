@@ -1,30 +1,28 @@
 'use client';
 import React from 'react';
-import type { InputNumberProps } from 'antd';
+
 import { Flex, InputNumber, Slider, ConfigProvider } from 'antd';
 import Title from 'antd/es/typography/Title';
 
 interface Props {
   className?: string;
+  inputLessValue: number;
+  onChangeLess: any;
+  inputMoreValue: number;
+  onChangeMore: any;
+  setinputMoreValue: (value: number) => void;
+  setinputLessValue: (value: number) => void;
 }
 
-export const InputNumberPrice: React.FC<Props> = ({ className }) => {
-  const [inputMoreValue, setinputMoreValue] = React.useState(1000);
-  const [inputLessValue, setinputLessValue] = React.useState(0);
-
-  const onChangeMore: InputNumberProps['onChange'] = (value) => {
-    if (isNaN(value as number)) {
-      return;
-    }
-    setinputMoreValue(value as number);
-  };
-  const onChangeLess: InputNumberProps['onChange'] = (value) => {
-    if (isNaN(value as number)) {
-      return;
-    }
-    setinputLessValue(value as number);
-  };
-
+export const InputNumberPrice: React.FC<Props> = ({
+  className,
+  inputLessValue,
+  onChangeLess,
+  inputMoreValue,
+  onChangeMore,
+  setinputMoreValue,
+  setinputLessValue,
+}) => {
   return (
     <Flex style={{ flexDirection: 'column', gap: '15px' }}>
       <ConfigProvider

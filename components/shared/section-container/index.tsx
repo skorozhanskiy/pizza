@@ -27,7 +27,6 @@ export const SectionContainer: React.FC<Props> = ({
   React.useEffect(() => {
     if (intersection?.isIntersecting) {
       setActiveCategoryId(categoryId);
-      console.log(categoryId, titleName);
     }
   }, [categoryId, intersection?.isIntersecting, titleName]);
   return (
