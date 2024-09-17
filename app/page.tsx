@@ -1,10 +1,21 @@
 import { Categories, Filters, Products } from '@/components/shared';
 import Title from 'antd/es/typography/Title';
+import { prisma } from '@/prisma/prisma-client';
 
-export default function Home() {
+export default async function Home() {
+  const categories = await prisma.category.findMany({
+    include: {
+      products: {
+        include: {
+          ingredients: true,
+          items: true,
+        },
+      },
+    },
+  });
+
   return (
     <div
-      className=""
       style={{
         display: 'grid',
         gridTemplateColumns: '250px 1fr',
@@ -13,7 +24,6 @@ export default function Home() {
         columnGap: '40px',
       }}>
       <div
-        className=""
         style={{
           gridColumn: '1/3',
           gridRow: '1',
@@ -32,7 +42,6 @@ export default function Home() {
         </Title>
       </div>
       <div
-        className=""
         style={{
           gridColumn: '1/3',
           gridRow: '2',
@@ -46,11 +55,21 @@ export default function Home() {
         }}>
         <Categories />
       </div>
-      <div className="" style={{ gridColumn: '1', gridRow: '3' }}>
+      <div style={{ gridColumn: '1', gridRow: '3' }}>
         <Filters />
       </div>
-      <div className="" style={{ gridColumn: '2', gridRow: '3' }}>
-        <Products />
+      <div style={{ gridColumn: '2', gridRow: '3' }}>
+        {categories.map(
+          (category) =>
+            category.products.length > 0 && (
+              <Products
+                categoryId={category.id}
+                key={category.id}
+                titleName={category.name}
+                items={category.products}
+              />
+            ),
+        )}
       </div>
     </div>
   );

@@ -54,6 +54,7 @@ model Product {
     id Int @id @default(autoincrement())
 
     name     String
+    description String
     imageUrl String
 
     ingredients Ingredient[]

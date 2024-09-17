@@ -8,18 +8,24 @@ import { Plus } from 'lucide-react';
 import styles from './pizza-card.module.scss';
 
 interface Props {
-  className?: string;
+  id: string;
+  imageUrl: string;
+  productName: string;
+  productDescription: string;
+  productPrice: number;
 }
 
-export const PizzaCard: React.FC<Props> = ({ className }) => {
+export const PizzaCard: React.FC<Props> = ({
+  id,
+  imageUrl,
+  productName,
+  productDescription,
+  productPrice,
+}) => {
   return (
-    <Flex className={styles.container}>
+    <Flex id={id} className={styles.container}>
       <Flex className={styles.images_container}>
-        <img
-          src="https://media.dodostatic.net/image/r:292x292/11EE7D612FC7B7FCA5BE822752BEE1E5.avif"
-          alt=""
-          className={styles.images}
-        />
+        <img src={imageUrl} alt={productName} className={styles.images} />
       </Flex>
       <Flex className={styles.text}>
         <Title
@@ -32,7 +38,7 @@ export const PizzaCard: React.FC<Props> = ({ className }) => {
             lineHeight: '30px',
             color: '#000000',
           }}>
-          Сырный цыпленок
+          {productName}
         </Title>
         <Paragraph
           className={styles.description}
@@ -43,13 +49,16 @@ export const PizzaCard: React.FC<Props> = ({ className }) => {
             lineHeight: '21px',
             color: '#B1B1B1',
           }}>
-          Цыпленок, моцарелла, сыры чеддер и пармезан, сырный соус, томаты, соус альфредо, чеснок
+          {productDescription}
         </Paragraph>
       </Flex>
       <Flex className={styles.price}>
         <span>
           <span style={{ fontWeight: 400, fontSize: 22, lineHeight: '32px' }}>от&nbsp;</span>
-          <span style={{ fontWeight: 700, fontSize: 22, lineHeight: '32px' }}>395 ₽</span>
+          <span style={{ fontWeight: 700, fontSize: 22, lineHeight: '32px' }}>
+            <span>{productPrice}</span>
+            &nbsp;<span>₽</span>
+          </span>
         </span>
         <ConfigProvider
           theme={{

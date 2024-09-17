@@ -4,42 +4,26 @@ import { SectionContainer } from '../../shared/section-container';
 import { Flex } from 'antd';
 
 interface Props {
-  className?: string;
+  titleName: string;
+  categoryId: number;
+  items: any[];
 }
-// const pizza = [{ titleName: 'Комбо', id: 'Комбо' }];
-export const Products: React.FC<Props> = ({ className }) => {
+
+export async function Products({ titleName, categoryId, items }: Props) {
   return (
-    <Flex className={className} style={{ flexDirection: 'column', marginBottom: '90px' }}>
-      <SectionContainer id="Пиццы" titleName="Пиццы 6:46" categoryId={1}>
-        <PizzaCard />
-        <PizzaCard />
-        <PizzaCard />
-        <PizzaCard />
-      </SectionContainer>
-      <SectionContainer id="Комбо" titleName=" Комбо" categoryId={2}>
-        <PizzaCard />
-        <PizzaCard />
-      </SectionContainer>
-      <SectionContainer id="Закуски" titleName=" Закуски" categoryId={3}>
-        <PizzaCard />
-        <PizzaCard />
-      </SectionContainer>
-      <SectionContainer id="Коктейли" titleName=" Коктейли" categoryId={4}>
-        <PizzaCard />
-        <PizzaCard />
-      </SectionContainer>
-      <SectionContainer id="Кофе" titleName=" Кофе" categoryId={5}>
-        <PizzaCard />
-        <PizzaCard />
-      </SectionContainer>
-      <SectionContainer id="Напитки" titleName=" Напитки" categoryId={6}>
-        <PizzaCard />
-        <PizzaCard />
-      </SectionContainer>
-      <SectionContainer id="Десерты" titleName=" Десерты" categoryId={7}>
-        <PizzaCard />
-        <PizzaCard />
+    <Flex style={{ flexDirection: 'column', marginBottom: '90px' }}>
+      <SectionContainer id={titleName} titleName={titleName} categoryId={categoryId}>
+        {items.map((item) => (
+          <PizzaCard
+            key={item.id}
+            id={item.id}
+            imageUrl={item.imageUrl}
+            productName={item.name}
+            productPrice={item.price}
+            productDescription={item.productDescription}
+          />
+        ))}
       </SectionContainer>
     </Flex>
   );
-};
+}
